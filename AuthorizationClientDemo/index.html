@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>LandSense Client Authorization Demo</title>
+
+	<!-- Include the third party CSS files -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://openlayers.org/en/v4.3.1/css/ol.css" type="text/css">
+
+	<!-- Include the site-specific CSS file -->
+	<link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">LandSense Client Authorization Demo</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container body-content">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h2>The map</h2>
+				<div id="map"></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Authorize</h2>
+				<button id="login">Login</button>
+				<button id="logout" style="display:none">Logout</button>
+				<span id="name"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Token Content:</h3>
+			</div>
+			<div class="col-md-12">
+				<pre id="tokenContent"></pre>
+			</div>
+		</div>
+
+		<hr />
+		<footer>
+			<p>&copy; 2018 - LandSenseFederationJavascriptDemo</p>
+		</footer>
+	</div>
+
+	<!-- Include the third party JS libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://openlayers.org/en/v4.3.1/build/ol.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hellojs/2.0.0-4/hello.all.js"></script>
+
+	<!-- Include the LandSense provider for hello.js -->
+	<script src="js/landsense.js"></script>
+
+	<!-- Include the site-specific JS files -->
+	<script src="js/demoMap.js"></script>
+	<script src="js/site.js"></script>
+</body>
+</html>
