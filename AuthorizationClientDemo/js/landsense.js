@@ -22,6 +22,31 @@
 				p.qs.response_type = "token id_token";
 			},
 
+			logout: function (callback, o) {
+
+				if (o.options.force) {
+					var token = (o.authResponse || {}).access_token;
+					var revokeUrl = "https://as.landsense.eu/oauth/revoke";
+
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", revokeUrl, true);
+
+					// Send the proper header information along with the request
+					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+					// Call a function when the state changes.
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+							callback();
+						} else {
+							return false;
+						}
+					}
+
+					xhr.send("token=" + token); 
+				}
+			},
+
 			base: "https://as.landsense.eu/oauth/",
 
 			get: {

@@ -46,7 +46,7 @@ $("#login").on("click", function () {
 
 // When the user clicks on logout
 $("#logout").on("click",function() {
-	hello("landsense").logout().then(function() {
+	hello("landsense").logout({ force: true }).then(function() {
 
 		// Remove the secured layer as it will not work without a valid access token anyway
 		demoMap.RemoveLayer();
