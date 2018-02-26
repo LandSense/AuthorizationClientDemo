@@ -44,7 +44,9 @@
 		// Get the authorization response from hello.js
 		var authResponse = hello.getAuthResponse("landsense");
 
-		// Provide the access token as an additional parameter to the secured layer
-		landsenseLayerSource.updateParams({ "access_token": authResponse.access_token });
+		if (authResponse !== null) {
+			// Provide the access token as an additional parameter to the secured layer
+			landsenseLayerSource.updateParams({ "access_token": authResponse.access_token });
+		}
 	}
 };
