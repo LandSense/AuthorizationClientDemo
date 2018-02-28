@@ -8,7 +8,7 @@ For client-side web applications we are providing a demo using the [hello.js](ht
 
 This demo loads a map and allows you to login using the LandSense federation. With the successful login you will receive an access token that is required to request a protected resource from a LandSense service provider, a GeoServer WMS layer (U.S. states) in this case, that is overlaid over the basemap.
 
-[![Screenshot](https://s13.postimg.org/oirlr2gs7/hello-js-screen.png)]
+![Screenshot](https://s13.postimg.org/rupwkd0tj/hello-js-screen.png)
 
 See a live demo [here](https://geo-wiki.org/tools/hellojs).
 
