@@ -19,7 +19,7 @@ The demo app uses client credentials from the [LandSense Authorisation Server](h
 ```javascript
 hello.init({
   landsense: "<YOUR-CLIENT-ID>"
-}, { scope: "openid profile email landsense" });
+});
 ```
 
 ---
@@ -57,3 +57,25 @@ Initializes the map with a base layer and provides the functions to add or remov
 ### css/site.css
 
 Just some very basic styling for the demo.
+
+---
+
+## Additional Info / FAQ
+
+### Dealing with query string parameters
+
+The redirect_uri has to match the URL you used when registering your app with the [LandSense Authorisation Server](https://as.landsense.eu). If you are using query string parameters on the page, then the login will fail with a message similar to *The redirect URI provided is missing or does not match*.
+
+This issue could occur if your application is using query string parameters for navigation. Example: `https://mysuperapp.net/?product=4711`. Your app will be registered with the redirect url `https://mysuperapp.net/` and the error message will appear when trying to login.
+
+To overcome the issue you can simply add an additional parameter called `redirect_uri` in the login function call:
+
+```javascript
+hello("landsense").login({
+  // Define the scopes (here in login, in case also other login providers shall be used)
+  scope: "openid profile email landsense",
+  // Fix the redirect_uri to the website root
+  // Or if you are not working under root you can just use window.location.pathname
+  redirect_uri: "/"
+}).then(function (p) {
+```
