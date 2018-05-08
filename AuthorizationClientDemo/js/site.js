@@ -33,7 +33,7 @@ $("#loginLandSense").on("click", function () {
 		$("#name").html("Hello " + jwt.preferred_username);
 
 		// Prettify the jwt content and display it in the PRE
-		var content = JSON.stringify(jwt, null, '\t');
+		var content = JSON.stringify(jwt, null, "\t");
 		$("#tokenContent").text(content);
 
 		// Add the secured layer to the map for the first time
@@ -68,7 +68,7 @@ $("#logoutLandSense").on("click",function() {
 
 // Helper function to parse the JWT token
 function parseJwt(token) {
-	var base64Url = token.split(".")[1];
-	var base64 = base64Url.replace("-", "+").replace("_", "/");
-	return JSON.parse(window.atob(base64));
+	var payload = token.split(".")[1];
+	var base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+	return JSON.parse(atob(base64));
 };
