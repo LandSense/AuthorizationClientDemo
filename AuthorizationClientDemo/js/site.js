@@ -1,18 +1,23 @@
-﻿// When the user clicks on login
-$("#login").on("click", function () {
-
+﻿$(document).ready(function() {
 	// Initialize hello.js to use the landsense provider
 	// Provide the client-id of the app you registered at: https://as.landsense.eu/oauth/registerapps
-	// Define the scopes
 	hello.init({
+		// Add additional providers here if needed
 		landsense: "78e04fab-b0e2-49b0-bbd5-8193791658ef@as.landsense.eu"
-	}, { scope: "openid profile email landsense" });
+	});
+});
+
+// When the user clicks on login
+$("#loginLandSense").on("click", function () {
 
 	// Setup event handler to update the WMS url each time the access token is refreshed
 	hello.on("auth", demoMap.RefreshWMSParams);
 
 	// Do the login (a small popup window opens)
-	hello("landsense").login().then(function (p) {
+	hello("landsense").login({
+		// Define the scopes (here in login, in case also other login providers shall be used)
+		scope: "openid profile email landsense"
+	}).then(function (p) {
 
 		// In case of success you end up here and get the id-token
 		var jwt = parseJwt(p.authResponse.id_token);
@@ -35,8 +40,8 @@ $("#login").on("click", function () {
 		demoMap.AddLayer();
 
 		// Toggle the login / logout buttons
-		$("#login").hide();
-		$("#logout").show();
+		$("#loginLandSense").hide();
+		$("#logoutLandSense").show();
 
 	}, function (e) {
 		// In case an error happend when doing the login
@@ -45,7 +50,7 @@ $("#login").on("click", function () {
 });
 
 // When the user clicks on logout
-$("#logout").on("click",function() {
+$("#logoutLandSense").on("click",function() {
 	hello("landsense").logout({ force: true }).then(function() {
 
 		// Remove the secured layer as it will not work without a valid access token anyway
@@ -56,8 +61,8 @@ $("#logout").on("click",function() {
 		$("#tokenContent").text("");
 
 		// Toggle the login / logout buttons
-		$("#logout").hide();
-		$("#login").show();
+		$("#logoutLandSense").hide();
+		$("#loginLandSense").show();
 	});
 });
 
