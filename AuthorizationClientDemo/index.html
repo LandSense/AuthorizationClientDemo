@@ -16,7 +16,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/">LandSense Client Authorization Demo</a>
+				<a class="navbar-brand" href="/">LandSense Client Authorization Demo (with incremental login)</a>
 			</div>
 		</div>
 	</nav>
@@ -32,7 +32,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Authorize</h2>
-				<button id="loginLandSense">Login with LandSense</button>
+				<button id="loginLandSenseOAuth" class="loginButton">Login with LandSense (OAuth)</button>
+				<button id="loginLandSenseCrypto" class="loginButton">Login with LandSense (Crypto)</button>
+				<button id="loginLandSenseProfile" class="loginButton">Login with LandSense (Profile)</button>
+				<button id="loginLandSenseEmail" class="loginButton">Login with LandSense (Email)</button>
+				<button id="loginLandSenseOpenId" class="loginButton">Login with LandSense (OpenId)</button>
 				<button id="logoutLandSense" style="display:none">Logout</button>
 				<span id="name"></span>
 			</div>
